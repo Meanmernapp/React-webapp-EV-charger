@@ -1,0 +1,30 @@
+// Apply custom scrollbar styles
+::-webkit-scrollbar {
+  width: 3px; // Adjust the width as needed
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #D1D1D1; // Customize the scrollbar thumb color
+  border-radius: 5px; // Adjust the border-radius as needed
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; // Customize the scrollbar thumb color on hover
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; // Customize the scrollbar track color
+  border-radius: 5px; // Adjust the border-radius as needed
+}
+
+
+// 
+.badge_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #BADA55;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+}

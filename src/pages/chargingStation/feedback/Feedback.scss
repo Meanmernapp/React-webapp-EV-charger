@@ -1,0 +1,72 @@
+.feed_back {
+
+
+    .Card_div {
+
+        border-radius: 5px;
+        border: 1px solid #d1d1d1d1;
+        height: 242px;
+        margin-top: 1rem;
+
+        .center_grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 242px;
+
+            .chart_bar {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                width: 100%;
+                padding-top: 1rem;
+            }
+        }
+
+        .status_cirlce {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .percentage_bar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #D1d1D1D1;
+            padding-top: 1rem;
+
+            .percentage_bar_inner {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                gap: 4rem;
+            }
+        }
+
+        .comment_container{
+            border-bottom: 1px solid #D1D1D1;
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+            .comment {
+                display: flex;
+                flex-direction: row;
+                gap: 0.5rem;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+       
+    }
+    .comment_div{
+        height: 242px;
+        overflow-y: scroll;
+        
+    }
+
+}

@@ -1,0 +1,14 @@
+.register_table {
+  .row_table {
+
+    &:hover {
+      background-color: #D1D1D1;
+      cursor: pointer;
+      font-weight: bold;
+      td {
+        color:#000000;
+      }
+    }
+
+  }
+}
