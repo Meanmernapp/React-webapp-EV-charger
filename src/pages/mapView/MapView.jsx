@@ -7,7 +7,7 @@ const mapLibraries = ['places', 'geometry', 'drawing']
 const MapView = () => {
   const { isLoaded, loadError } = useJsApiLoader({
     // id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyDd_8ca5Mt4oncgtxn5r63NiNN62kxbyqA',
+    googleMapsApiKey: '',
     mapLibraries
   });
 
