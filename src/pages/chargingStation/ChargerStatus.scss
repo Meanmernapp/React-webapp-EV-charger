@@ -2,7 +2,7 @@
   border: 1px solid #D1D1D1;
   padding: 1.5rem;
   border-radius: 5px; 
-  height: 727px;
+ 
  
 .switch_lable{
   .css-3kk9v9-MuiTypography-root {
@@ -41,6 +41,33 @@
 }
 
 }
+.battery_availability{
+  .react-datepicker__input-container{
+    input{
+      max-width: 87px !important;
+      padding: 0.5rem !important;
+      border-radius: 5px !important;
+      overflow: hidden;
+      border: 1px solid gainsboro !important;
+    }
+  }
+  .css-a643pv-MuiStack-root>.MuiTextField-root{
+    min-width: 166px;
+    max-width: 166px;
+  }
+
+  .css-froe0x > .MuiTextField-root{
+    min-width: 190px;
+    max-width: 199px;
+  }
+  .css-12qs7hp-MuiInputBase-input-MuiOutlinedInput-input{
+    height: 0.5rem;
+  }
+  .css-16sx77j{
+    height: 0.5rem;
+  }
+
+}
 
 }
 
@@ -49,26 +76,23 @@
   padding: 1.5rem;
   border-radius: 5px;
   background-color: #BADA55;
-  height: 727px;
+  min-height: 727px;
   display: flex;
   align-items: center;
   justify-content: center;
-  .energy_availble_box{
-    width: 225px;
-    height: 225px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 50%;
-    box-shadow: 
-    0 0 0 5px #000000, /* First black border */
-    0 0 0 17px #74993F, /* Light gray center */
-    0 0 0 22px #000000; /* Second black border */
-  }
 
+  .energy_availble_box{
+    position: relative;
+    width: 270px;
+    height: 270px;
+      display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
+  }
   .available_data{
     padding: 0rem 1rem;
     height: 56px;
@@ -79,10 +103,7 @@
     border: 3px solid #000000;
   }
   .plug_availbele_container{
-    display: flex;
-    align-items: center;
-    padding-top: 1rem;
-    gap: 1rem;
+    padding-top: 0.5rem;
 
     .plug_available_card{
       width: 167px;
@@ -92,6 +113,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      
 
       img{
         width: 64px;
@@ -101,3 +123,40 @@
   }
 }
 
+
+// @media query
+@media (max-width: 375px) {
+  /* Styles for screens less than or equal to 375px wide */
+  
+  .battery_availability{
+    .css-a643pv-MuiStack-root>.MuiTextField-root{
+      min-width: 106px !important;
+      max-width: 106px !important;
+    }
+  
+    .css-froe0x > .MuiTextField-root{
+      min-width: 106px !important;
+      max-width: 106px !important;
+    }
+  
+  }
+}
+
+@media (min-width: 768px) and (max-width: 820px) {
+  /* Styles for screens between 768px and 820px wide */
+  .battery_availability{
+    .css-a643pv-MuiStack-root>.MuiTextField-root{
+      min-width: 106px !important;
+      max-width: 106px !important;
+    }
+  
+    .css-froe0x > .MuiTextField-root{
+      min-width: 106px !important;
+      max-width: 106px !important;
+    }
+  
+  }
+  .change_size{
+    font-size: 1rem !important;
+  }
+}

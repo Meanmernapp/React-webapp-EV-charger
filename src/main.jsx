@@ -12,9 +12,10 @@ import { persistStore } from 'redux-persist'
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "./index.scss"
+// import dotenv from 'dotenv'
 let persistor = persistStore(store);
 
-
+// dotenv.config()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <Suspense fallback={"loading..."}>

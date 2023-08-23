@@ -41,24 +41,24 @@ const theme = createTheme({
     },
 
     h2: {
-      fontSize: "2rem", // Change this to your desired font size
-      fontWeight: 600, // Change this to your desired font weight
+      fontSize: "2rem", 
+      fontWeight: 600, 
     },
     h3:{
-      fontSize: "1.5rem", // Change this to your desired font size
-      fontWeight: 600, // Change this to your desired font weight
+      fontSize: "1.5rem", 
+      fontWeight: 600, 
     },
     h4:{
-      fontSize: "1rem", // Change this to your desired font size
-      fontWeight: 600, // Change this to your desired font weight
+      fontSize: "1rem", 
+      fontWeight: 600, 
     },
     h5: {
-      fontSize: "0.875rem", // Change this to your desired font size
-      fontWeight: 600, // Change this to your desired font weight
+      fontSize: "0.875rem", 
+      fontWeight: 600, 
     },
     body1: {
-      fontSize: "0.875rem", // Change this to your desired font size
-      fontWeight: 400, // Change this to your desired font weight
+      fontSize: "0.875rem", 
+      fontWeight: 400, 
     },
     body2:{
       fontSize:"0.75rem",
@@ -68,6 +68,7 @@ const theme = createTheme({
   },
 
   components: {
+    // overrides any componet you want here
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
@@ -127,6 +128,7 @@ const theme = createTheme({
         
       },
     },
+
   },
 });
 

@@ -24,7 +24,7 @@ const authenticationSlice = createSlice({
           state.user = data?.data;
           sessionStorage.setItem("token",data?.data?.token)
         } else if (status >= 400 && status < 500) {
-          toast.error(data?.message);
+          // toast.error(data?.message);
         }
       });
    

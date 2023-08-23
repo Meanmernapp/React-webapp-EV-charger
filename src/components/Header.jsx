@@ -76,8 +76,8 @@ function Header() {
     return (
         <AppBar position="static"
             ref={headerRef}
-            sx={{ boxShadow: "0px 1px 5px 0px #00000026" }}>
-            <Container maxWidth="xl">
+            sx={{ boxShadow: "0px 1px 5px 0px #00000026",padding: "0rem 1rem" }}>
+            {/* <Container maxWidth="xl"> */}
                 <Toolbar disableGutters>
 
                     {/* <Typography>
@@ -240,7 +240,7 @@ function Header() {
                         </Menu>
                     </Box>
                 </Toolbar>
-            </Container>
+            {/* </Container> */}
         </AppBar>
     );
 }

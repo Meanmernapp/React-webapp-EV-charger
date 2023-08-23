@@ -1,19 +1,16 @@
-import {Stack, useMediaQuery } from '@mui/material'
+import { Stack, useMediaQuery } from '@mui/material'
 import React from 'react'
-import SideBarMap from '../../components/SideBarMap'
 import { useSelector } from 'react-redux'
-import EvChargerModal from './component/EvChargerModal'
-import './mapview.scss'
-import MapView from './MapView'
+import SideBarMap from '../../components/SideBarMap'
+import ActualStatus from './ActualStatus'
 
-const MapViewLayout = () => {
+const ActualStatusLayout = () => {
     const { getHeaderHeight } = useSelector(state => state.SharedSlice)
     const mapViewHeight = `calc(100vh - ${getHeaderHeight}px)`;
-    
+
     const isSmallerScreen = useMediaQuery((theme => theme.breakpoints.down('sm')))
     return (
         <Stack direction="row" >
-            {/* sidebar */}
             <Stack
                 width="310px"
                 height={mapViewHeight}
@@ -21,13 +18,12 @@ const MapViewLayout = () => {
             >
                 <SideBarMap />
             </Stack>
-            {/* map view */}
-            <Stack width="100%" height={mapViewHeight} >
-                <MapView />
-                {/* <EvChargerModal/> */}
+          
+            <Stack width="100%" height={mapViewHeight} sx={{background:"#fff"}} >
+                <ActualStatus/>
             </Stack>
         </Stack>
     )
 }
 
-export default MapViewLayout
+export default ActualStatusLayout

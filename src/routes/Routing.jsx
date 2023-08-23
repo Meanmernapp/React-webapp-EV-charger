@@ -7,6 +7,8 @@ import Login from "../pages/login/Login";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { useSelector } from "react-redux";
 import MapViewLayout from "../pages/mapView/MapViewLayout";
+import ActualStatusLayout from "../pages/actualStatus/ActualStatusLayout";
+
 
 // Lazy load the components
 // const ChargingStation = lazy(() => import("../pages/chargingStation/ChargingStation"));
@@ -20,13 +22,13 @@ const Routing = () => {
 
       <Route element={<HeaderLayout />}>
         <Route index path="/map-view" element={<MapViewLayout/>} />
-        <Route path="actual-status" element={"status"} />
+        <Route path="actual-status" element={<ActualStatusLayout/>} />
         <Route path="ev-charger" element={<ChargingStation />} />
         <Route path="statistics" element={"statistics"} />
         <Route path="operations" element={"operation"} />
       </Route>
       <Route index path="/" element={
-        <GoogleReCaptchaProvider reCaptchaKey="6LdxUjgnAAAAAK8Hy1i3a94ULzsPIglW8KTEaNzy">
+        <GoogleReCaptchaProvider reCaptchaKey={import.meta.env.VITE_REACT_APP_RECAPTCHA_SITE_KEY}>
           <Login />
         </GoogleReCaptchaProvider>
       } />

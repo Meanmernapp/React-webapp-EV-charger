@@ -1,2 +1,3 @@
-export const URL = "https://dev.greenboxmobile.app/"
+export const URL = import.meta.env.VITE_REACT_APP_DOMAIN
+
 

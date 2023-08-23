@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Doughnut } from 'react-chartjs-2';
-import { Chart, ArcElement } from 'chart.js';
-Chart.register(ArcElement);
+import { Chart, ArcElement,DoughnutController  } from 'chart.js';
+Chart.register(ArcElement,DoughnutController );
 
 const CircleChart = ({ data, dataItem }) => {
-  // chart data
-  const chartData = {
+  const [chartData, setChartData] = useState({
     labels: data.map((item) => item.name),
     datasets: [
       {
@@ -16,13 +14,31 @@ const CircleChart = ({ data, dataItem }) => {
         outerWidth: 2,
       },
     ],
-  };
+  });
 
-  return (
-    <Doughnut
-      data={chartData}
-      options={{ responsive: true, cutout: '80%' }}
-      plugins={[
+  useEffect(() => {
+    // Update the chart data whenever the data prop changes
+    setChartData({
+      labels: data.map((item) => item.name),
+      datasets: [
+        {
+          data: data.map((item) => item.percentage),
+          backgroundColor: data.map((item) => item.color),
+          borderWidth: 5,
+          borderColor: '#000',
+          outerWidth: 2,
+        },
+      ],
+    });
+  }, [data]);
+
+  useEffect(() => {
+    // Create a new chart instance and apply the plugin whenever the dataItem prop changes
+    const chart = new Chart('circleChart', {
+      type: 'doughnut',
+      data: chartData,
+      options: { responsive: true, cutout: '80%' },
+      plugins: [
         {
           beforeDraw(chart) {
             const { width } = chart;
@@ -34,17 +50,14 @@ const CircleChart = ({ data, dataItem }) => {
             ctx.textBaseline = 'top';
 
             const text = dataItem?.text;
-            const iconUrl = dataItem?.icon; // Update to use the 'icon' property
+            const iconUrl = dataItem?.icon;
 
-            const iconWidth = 40; // Set the width of the image
-            const iconHeight = 40; // Set the height of the image
-
+            const iconWidth = 40;
+            const iconHeight = 40;
             const textX = Math.round((width - ctx.measureText(text).width) / 2);
-            const iconX = Math.round((width - iconWidth) / 2); // Center the image
-            const lineHeight = parseInt(fontSize, 10) * 5; // Adjust the line height as needed
-
-            // Draw the icon above the text
-            const iconY = height / 2 - lineHeight - iconHeight; // Adjust the vertical position
+            const iconX = Math.round((width - iconWidth) / 2);
+            const lineHeight = parseInt(fontSize, 10) * 5;
+            const iconY = height / 2 - lineHeight - iconHeight;
             if (iconUrl) {
               const image = new Image();
               image.src = iconUrl;
@@ -52,17 +65,22 @@ const CircleChart = ({ data, dataItem }) => {
                 ctx.drawImage(image, iconX, iconY, iconWidth, iconHeight);
               };
             }
-
-            // Draw the text below the icon
             const textY = height / 2 + lineHeight;
             ctx.fillText(text, textX, textY);
 
             ctx.save();
           },
         },
-      ]}
-    />
-  );
+      ],
+    });
+
+    return () => {
+      // Clean up the chart instance when the component unmounts
+      chart.destroy();
+    };
+  }, [chartData, dataItem]);
+
+  return <canvas id="circleChart" />;
 };
 
 export default CircleChart;

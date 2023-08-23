@@ -5,6 +5,7 @@ export const apiInstance =  axios.create({
   baseURL: URL,
   headers: {
     Accept: "application/json",
+    SecretToken :import.meta.env.VITE_REACT_APP_SECRET_TOKEN
   },
 });
 
@@ -14,7 +15,7 @@ const responseSuccessHandler = (response) => {
 };
 
 const responseErrorHandler = (error) => {
-  document.getElementById("overlay").style.display = "none";
+  // document.getElementById("overlay").style.display = "none";
   if (!navigator.onLine) {
     toast.error("Request failed, Please check your network connection!"); 
   }
@@ -45,8 +46,7 @@ const responseErrorHandler = (error) => {
 
 apiInstance.interceptors.request.use(
   function (config) {
-    // document.getElementById("overlay").style.display = "block"; your loader heree
-    config.headers.Authorization = `Bearer djfdjkfl`; // replace here with your token
+    config.headers.Authorization = `Bearer ${sessionStorage.getItem("token")}`; // replace here with your token
     return config;
   },
   function (error) {

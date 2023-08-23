@@ -1,15 +1,14 @@
-import { Button, InputLabel, Stack, Typography } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material'; // Import the ErrorOutline icon
+import CancelIcon from '@mui/icons-material/Cancel';
+import { Button, IconButton, InputAdornment, InputLabel, Stack, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
+import React, { useState } from 'react';
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/logo/logoT.svg";
-import React, { useEffect, useState } from 'react';
-import { TextField, InputAdornment, IconButton } from '@mui/material';
-import { Visibility, VisibilityOff, ErrorOutline } from '@mui/icons-material'; // Import the ErrorOutline icon
-import CancelIcon from '@mui/icons-material/Cancel';
-import "./login.css";
-import { useDispatch } from 'react-redux';
 import { LoginUser } from '../../services/authetication/AutheticationApi';
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import "./login.css";
 
 const Login = () => {
   // hook
@@ -42,7 +41,8 @@ const Login = () => {
     }
 
     dispatch(LoginUser(data)).then(res => {
-      if (res.error) {
+
+      if (res.payload?.data?.status == false) {
         setError(true)
       } else {
         navigate("/map-view")
@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   const onChangeRecapcha = (value) => {
-    console.log(value)
+     //action here
   }
 
   return (

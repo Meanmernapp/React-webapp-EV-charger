@@ -1,6 +1,13 @@
 .register_table {
-  .row_table {
+  td{
+    text-align: center;
+  }
+  th{
+    text-align: center;
+  }
 
+  .row_table {
+   
     &:hover {
       background-color: #D1D1D1;
       cursor: pointer;
@@ -9,6 +16,25 @@
         color:#000000;
       }
     }
+    .react-datepicker__input-container{
+      input{
+        max-width: 87px !important;
+        padding: 0.5rem !important;
+        border-radius: 5px !important;
+        border: 1px solid gainsboro !important;
+        overflow: hidden;
+      }
+    }
 
   }
+}
+.tab_list{
+  .css-14zx5er-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color: #000000 ;
+    font-weight: bold;
+}
+.css-1atjjj6.Mui-selected{
+  color: #000000 ;
+  font-weight: bold;
+}
 }

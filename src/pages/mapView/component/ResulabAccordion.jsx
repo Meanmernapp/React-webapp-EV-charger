@@ -16,7 +16,7 @@ const ResulabAccordion = ({ title, count, icon }) => {
   const handleCheckboxChange = (itemId) => (event) => {
     // Update the state or perform any action when a checkbox is clicked
     // You can store the checked state in the component's state or manage it using a state management library like Redux.
-    console.log(`Checkbox ${itemId} is checked: ${event.target.checked}`);
+    // console.log(`Checkbox ${itemId} is checked: ${event.target.checked}`);
   };
 
   return (

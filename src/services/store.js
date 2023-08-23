@@ -5,10 +5,12 @@ import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 import AuthenticatioauthennSlice from "./authetication/AutheticationSlice";
 import SharedSlice from "./shared/SharedSlice";
+import ChargingStationSlice from "./chargingStation/ChargingStationSlice";
 
 const reducers = combineReducers({
   AuthenticatioauthennSlice,
-  SharedSlice
+  SharedSlice,
+  ChargingStationSlice
  
 });
 
