@@ -1,8 +1,13 @@
 // slice and name
-const authetication = "authetication"
-const login = 'login'
+export const authetication = "authetication"
+export const login = 'login'
+export const resetPassword = "resetPassword"
+export const newPassword = "newPassword"
+export const getUserProfile= "getUserProfile"
 
 // api end point name
-const loginEndpoint = "api/auth/login"
+export const loginEndpoint = "api/auth/login"
+export const resetPasswordEnpoint = "api/main/reset-password"
+export const newPassowrdEndpoint = "api/main/new-password"
+export const getUserProfileEndpoint = "api/user/profile"
 
-export { authetication, login,loginEndpoint}

@@ -34,7 +34,7 @@ const EpackModal = () => {
                     </Typography>
                     <Stack direction="row" gap="1rem" paddingTop="1rem">
                         <Box>
-                            <SimpleChartBar />
+                            <SimpleChartBar  data={[70,30]} />
                             <Typography variant='body1' textAlign="center">70%</Typography>
                         </Box>
                         <Box>
@@ -52,7 +52,7 @@ const EpackModal = () => {
 
                 <Stack paddingTop="0.7rem" sx={{ borderBottom: "1px solid #D1D1D1", paddingBottom: '0.7rem' }}>
                     <Typography variant='body2'>CONNECTION</Typography>
-                    <Stack direction="row" justifyContent="space-between" paddingTop="0.5rem">
+                    <Stack direction="row" justifyContent="space-between" paddingTop="0.5rem" gap="0.5rem">
                         <Typography variant='h5' component="h5">EV-CHARGER NAME</Typography>
                         <Typography display="flex" alignItems="center" gap="0.2rem"
                             variant='body2'
@@ -68,7 +68,7 @@ const EpackModal = () => {
                     </Stack>
                     <Stack direction="row" gap="1rem" paddingTop="1rem">
                         <Box>
-                            <SimpleChartBar />
+                            <SimpleChartBar  data={[70,30]} />
                             <Typography variant='body1' textAlign="center">70%</Typography>
                         </Box>
                         <Box>

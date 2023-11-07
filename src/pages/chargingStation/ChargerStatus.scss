@@ -22,14 +22,14 @@
   flex-direction: row;
   justify-content: flex-end;
   gap: 1rem;
-  padding-top: 2rem;
+  padding-top: 0.5rem;
  
 .update{
    background-color: #74993F;
    color: #ffffff;
    border-radius: 30px;
    width: 156px;
-   height: 48px;
+   height: 30px;
 }
 .cancel{
   background-color: #ffffff;
@@ -37,7 +37,7 @@
    border: 1px solid #74993F;
    border-radius: 30px;
    width: 156px;
-   height: 48px;
+   height: 30px;
 }
 
 }
@@ -66,9 +66,74 @@
   .css-16sx77j{
     height: 0.5rem;
   }
+  .css-1muiuc0-MuiInputBase-root-MuiOutlinedInput-root{
+    max-height: 38px;
+    overflow-y: hidden;
+  }
 
 }
 
+.e_pack_control{
+  padding-top: 1rem;
+  .working_mode{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .switch_box{
+      display: flex;
+      align-items: center;
+      padding: 0.2rem 0.2rem;
+      gap: 1rem;
+      background: #71953E;
+      color: #ffffff;
+      cursor: pointer;
+
+      .turn_off_dc{
+        background: #ffffff;
+        padding: 0.5rem 1rem;
+        color: #000000;
+      }
+      .padd{
+        padding-left: 0.5rem;
+      }
+      .turn_on_dc{
+        background: #ffffff;
+        color: #000000;
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+  .btn_container{
+    display: flex;
+    justify-content: flex-end;
+
+    .shut_down{
+      display: flex;
+      align-items: center;
+      padding: 0.4rem 1rem;
+      gap: 0.5rem;
+      background: #FF553E;
+      &:hover{
+        background: #FF553E
+      }
+     
+    }
+    .trun_on{
+      display: flex;
+      align-items: center;
+      padding: 0.4rem 1rem;
+      gap: 0.5rem;
+      background: #71953E;
+      &:hover{
+        background: #71953E
+      }
+     
+    }
+    
+  }
+}
 }
 
 .ev_charger_kwh{
@@ -138,6 +203,7 @@
       min-width: 106px !important;
       max-width: 106px !important;
     }
+   
   
   }
 }
@@ -154,6 +220,7 @@
       min-width: 106px !important;
       max-width: 106px !important;
     }
+   
   
   }
   .change_size{

@@ -4,11 +4,14 @@ import Header from '../components/Header'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { Container } from '@mui/material';
 import { useSelector } from 'react-redux';
+import cryptoJs from 'crypto-js'
 
 const HeaderLayout = () => {
-  const token = sessionStorage.getItem("token")
+  const tokenDecrpt = sessionStorage.getItem("token")
+  const bytes = cryptoJs.AES.decrypt(tokenDecrpt || "no", import.meta.env.VITE_SECURE_KEY)
+  const token = bytes.toString(cryptoJs.enc.Utf8);
   const navigate = useNavigate()
-  const { user } = useSelector(state => state.AuthenticatioauthennSlice)
+  const { user } = useSelector(state => state.AuthenticationSlice)
   // this useEffect to redirect auth user to page
   useEffect(() => {
     if (!token || !user) {

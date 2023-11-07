@@ -1,23 +1,24 @@
 import axios from "axios";
 import { URL } from "../constants/service";
+import cryptoJs from 'crypto-js'
 
-export const apiInstance =  axios.create({
+export const apiInstance = axios.create({
   baseURL: URL,
   headers: {
     Accept: "application/json",
-    SecretToken :import.meta.env.VITE_REACT_APP_SECRET_TOKEN
+    SecretToken: import.meta.env.VITE_REACT_APP_SECRET_TOKEN
   },
 });
 
 const responseSuccessHandler = (response) => {
-//   document.getElementById("overlay").style.display = "none"; your loader here
+    document.getElementById("overlay").style.display = "none"; 
   return response;
 };
 
 const responseErrorHandler = (error) => {
-  // document.getElementById("overlay").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
   if (!navigator.onLine) {
-    toast.error("Request failed, Please check your network connection!"); 
+    toast.error("Request failed, Please check your network connection!");
   }
   console.log(error, "err in response");
 
@@ -46,7 +47,11 @@ const responseErrorHandler = (error) => {
 
 apiInstance.interceptors.request.use(
   function (config) {
-    config.headers.Authorization = `Bearer ${sessionStorage.getItem("token")}`; // replace here with your token
+    document.getElementById("overlay").style.display = "block";
+    const tokenDecrpt = sessionStorage.getItem("token")
+    const bytes = cryptoJs.AES.decrypt(tokenDecrpt || "no", import.meta.env.VITE_SECURE_KEY)
+    const token = bytes.toString(cryptoJs.enc.Utf8);
+    config.headers.Authorization = `Bearer ${token}`; // replace here with your token
     return config;
   },
   function (error) {

@@ -8,13 +8,14 @@ import {
   DialogContentText,
   DialogTitle,
   IconButton,
+  Typography,
 } from '@mui/material';
-import { Close as CloseIcon } from '@mui/icons-material'; 
-const ConfirmationModal = ({ open, onClose, onConfirm, confirmationMessage }) => {
+import { Close as CloseIcon } from '@mui/icons-material';
+const ConfirmationModal = ({ open, onClose, onConfirm, confirmationMessage, confirm, colorCode }) => {
   return (
-    <Dialog open={open} onClose={onClose} >
-          {/* IconButton with CloseIcon for closing the modal */}
-      <IconButton
+    <Dialog open={open} onClose={onClose}   >
+      {/* IconButton with CloseIcon for closing the modal */}
+      {/* <IconButton
         onClick={onClose}
         aria-label="close"
         sx={{
@@ -24,30 +25,47 @@ const ConfirmationModal = ({ open, onClose, onConfirm, confirmationMessage }) =>
         }}
       >
         <CloseIcon />
-      </IconButton>
-      <DialogTitle sx={{padding: "12px 24px"}} textAlign="center" >Confirmation</DialogTitle>
-      <DialogContent sx={{padding: "12px 24px"}}>
-        <DialogContentText>{confirmationMessage}</DialogContentText>
+      </IconButton> */}
+      <DialogTitle sx={{ padding: "12px 24px", color: colorCode }} textAlign="center" >
+        <Typography variant='h3' component="h3" >
+          Are you sure?
+        </Typography>
+
+      </DialogTitle>
+      <DialogContent sx={{ padding: "12px 24px", textAlign:"center" }}>
+        <DialogContentText >{confirmationMessage}</DialogContentText>
       </DialogContent>
       <DialogActions sx={{
-        display:'flex',
-        alignItems:'center',
-        justifyContent:"center",
-        gap:"1rem",
-        paddingBottom:"1rem"
-        
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: "center",
+        gap: "1rem",
+        paddingBottom: "1rem"
+
       }}>
-        <Button size='small' onClick={onClose} color="primary" >
+        <Button variant='outlined' color='primary' onClick={onClose}
+          sx={{
+            border: `1px solid ${colorCode}`,
+            color: colorCode,
+            borderRadius: "105px",
+            "&:hover": {
+              border: `1px solid ${colorCode}`,
+            }
+          }}>
           Cancel
         </Button>
-        <Button size='small' onClick={onConfirm} color="primary"sx={{
-            background:'#74993F',
-            "&:hover":{
-                background:"#BADA55"
-            }
+        <Button onClick={onConfirm} sx={{
+          background: colorCode,
+          borderRadius: "105px",
+          padding: "0.5rem 1rem  ",
+          "&:hover": {
+            background: colorCode
+          }
+
+
         }}
-         autoFocus>
-          Confirm
+          autoFocus>
+          {confirm}
         </Button>
       </DialogActions>
     </Dialog>

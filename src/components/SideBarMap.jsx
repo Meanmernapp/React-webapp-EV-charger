@@ -17,14 +17,9 @@ const SideBarMap = () => {
         // Handle your search logic here
     };
     return (
-        <Stack sx={{ padding: "1rem" }}>
+        <Stack sx={{ padding: "1rem" , marginTop:"1rem"}}>
             <SearchField value={searchValue} onChange={handleSearchChange} />
             <Box sx={{ paddingTop: "1rem" }}>
-                {/* <SelectField
-                    value={eSource}
-                    icon={ESourceIcon}
-                    placeholder="E Source"
-                    onChange={(e) => setESource(e.target.value)} /> */}
                 <ResulabAccordion
                     title={"E Source"}
                     icon={ESourceIcon}
@@ -35,13 +30,6 @@ const SideBarMap = () => {
                 <Typography sx={{ paddingBottom: "0.5rem" }}>
                     Device
                 </Typography>
-
-                {/* <SelectField
-                    value={hpCharger}
-                    icon={ESourceIcon}
-                    placeholder="Hp Charger"
-                    onChange={(e) => setHpCharger(e.target.value)} /> */}
-
                 <Box>
                     <ResulabAccordion
                         title={"Hp Charger"}
@@ -50,27 +38,12 @@ const SideBarMap = () => {
                     />
                 </Box>
                 <Box sx={{ paddingTop: "1rem" }}>
-
-                    {/* <SelectField
-
-                        value={ePack}
-                        icon={EPackIcon}
-                        placeholder="E Packs"
-                        onChange={(e) => setEpack(e.target.value)} /> */}
                     <ResulabAccordion
                         title={"E Packs"}
                         icon={EPackIcon}
-
                     />
                 </Box>
-
             </Box>
-            {/* <br />
-            h charger
-            <br />
-            epack
-            <br />
-            location */}
         </Stack>
     )
 }

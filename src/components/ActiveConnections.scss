@@ -1,0 +1,45 @@
+.doughnet-box {
+  position: relative;
+  width: 130px;
+  height: 130px;
+
+  .doughnet-box-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
+  }
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+.active-connections-doughnut-container {
+  border: 1px solid #ddd;
+  padding: 2rem;
+}
+
+.active-connections-switch-container {
+  min-height: 100px;
+  border: 1px solid #ddd;
+  padding: 1rem;
+}
+.play-pause-btn {
+  color: #000;
+  border: 1px solid #d1d1d1;
+  text-transform: capitalize;
+  padding: 4px 15px;
+  background: red;
+}
+.active-connections-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

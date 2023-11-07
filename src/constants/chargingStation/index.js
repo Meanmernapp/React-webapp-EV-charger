@@ -1,62 +1,34 @@
 // slice and name
-const chargingStation = "chargingStation"
+export const chargingStation = "chargingStation"
 // pliotuser table
-const getPliotUser = 'getPliotUser'
-const getHistroyUser = "getHistroyUser"
-const updatePliotUser = 'updatePliotUser'
+export const getPliotUser = 'getPliotUser'
+export const getHistroyUser = "getHistroyUser"
+export const updatePliotUser = 'updatePliotUser'
 // charging status
-const getChargingStatus = 'getChargingStatus'
-const updateChargingStatus = 'updateChargingStatus'
-const createBatteryAvailable = 'createBatteryAvailable'
-const updateBatteryAvailable = 'updateBatteryAvailable'
-const getBatteryAvailables = 'getBatteryAvailables'
-const deleteBatteryAvailables = 'deleteBatteryAvailables'
-const getBatteryPercentage = "getBatteryPercentage"
-const getConnectorStatus = "getConnectorStatus"
+export const getChargingStatus = 'getChargingStatus'
+export const updateChargingStatus = 'updateChargingStatus'
+export const createBatteryAvailable = 'createBatteryAvailable'
+export const updateBatteryAvailable = 'updateBatteryAvailable'
+export const getBatteryAvailables = 'getBatteryAvailables'
+export const deleteBatteryAvailables = 'deleteBatteryAvailables'
+export const getBatteryPercentage = "getBatteryPercentage"
+export const getConnectorStatus = "getConnectorStatus"
 // feedback
-const getFeedbacks = "getFeedbacks"
+export const getFeedbacks = "getFeedbacks"
 // api end point name
 //plot user table
-const getPliotUserEndPoint = "api/pilot/special-permission/registered-users"
-const getHistroyUserEndPoint = "api/pilot/special-permission/history-users"
-const updatePliotUserEndPoint = "api/pilot/special-permission/update-pilot-user/"
+export const getPliotUserEndPoint = "api/pilot/special-permission/registered-users"
+export const getHistroyUserEndPoint = "api/pilot/special-permission/history-users"
+export const updatePliotUserEndPoint = "api/pilot/special-permission/update-pilot-user/"
 // charging status
-const getChargingStatusEndPoint = "api/pilot/special-permission/charging-status"
-const updateChargingStatusEndPoint = "api/pilot/special-permission/update-charging-status"
-const createBatteryAvailableEndPoint = "api/pilot/special-permission/battery-availability"
-const updateBatteryAvailableEndPoint = "api/pilot/special-permission/update-battery-availability"
-const getBatteryAvailablesEndPoint = "api/pilot/special-permission/battery-next-available"
-const deleteBatteryAvailablesEndPoint = 'api/pilot/special-permission/delete-battery-availability/'
-const getBatteryPercentageEndPoint = "api/pilot/special-permission/battery-percentage"
-const getConnectorStatusEndPoint = "api/pilot/special-permission/connector-status"
+export const getChargingStatusEndPoint = "api/pilot/special-permission/charging-status"
+export const updateChargingStatusEndPoint = "api/pilot/special-permission/update-charging-status"
+export const createBatteryAvailableEndPoint = "api/pilot/special-permission/battery-availability"
+export const updateBatteryAvailableEndPoint = "api/pilot/special-permission/update-battery-availability"
+export const getBatteryAvailablesEndPoint = "api/pilot/special-permission/battery-next-available"
+export const deleteBatteryAvailablesEndPoint = 'api/pilot/special-permission/delete-battery-availability/'
+export const getBatteryPercentageEndPoint = "api/pilot/special-permission/battery-percentage"
+export const getConnectorStatusEndPoint = "api/pilot/special-permission/connector-status"
 // feedback
-const getFeedbacksEndpint = "api/pilot/special-permission/feedbacks"
+export const getFeedbacksEndpint = "api/pilot/special-permission/feedbacks"
 
-export { 
-    chargingStation, 
-    getPliotUser,
-    getHistroyUser,
-    getPliotUserEndPoint,
-    updatePliotUser,
-    getBatteryAvailables,
-    getChargingStatus,
-    updateChargingStatus,
-    createBatteryAvailable,
-    updateBatteryAvailable,
-    getFeedbacks,
-    updatePliotUserEndPoint,
-    getChargingStatusEndPoint,
-    updateChargingStatusEndPoint,
-    createBatteryAvailableEndPoint,
-    updateBatteryAvailableEndPoint,
-    getBatteryAvailablesEndPoint,
-    getFeedbacksEndpint,
-    deleteBatteryAvailables,
-    deleteBatteryAvailablesEndPoint,
-    getBatteryPercentageEndPoint,
-    getBatteryPercentage,
-    getHistroyUserEndPoint,
-    getConnectorStatus,
-    getConnectorStatusEndPoint
-
-}

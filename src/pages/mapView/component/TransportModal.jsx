@@ -11,12 +11,16 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import carIcon from '../../../assets/common/uCarSideview.svg'
 import { Accordion, AccordionSummary, AccordionDetails, Badge } from '@mui/material';
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const TransportModal = () => {
     const { getHeaderHeight } = useSelector(state => state.SharedSlice)
+    const navigate = useNavigate()
     const buttonSytle = {
         borderRadius: "0px",
-        fontSize: "13px"
+        fontSize: "13px",
+        background: '#D9D9D9',
+        color: "#000"
     }
 
     return (
@@ -48,7 +52,7 @@ const TransportModal = () => {
                         display: 'flex',
                         alignItems: "center",
                         gap: "0.5rem",
-                        opacity:"0.8"
+                        opacity: "0.8"
                     }}>
                     To:
                     <Typography variant='h4' component='h4' >
@@ -60,7 +64,7 @@ const TransportModal = () => {
                         display: 'flex',
                         alignItems: "center",
                         gap: "0.5rem",
-                        opacity:"0.8"
+                        opacity: "0.8"
                     }}>
                     From:
                     <Typography variant='h4' component='h4' >
@@ -72,7 +76,7 @@ const TransportModal = () => {
                         display: 'flex',
                         alignItems: "center",
                         gap: "0.5rem",
-                        opacity:"0.8"
+                        opacity: "0.8"
                     }}>
                     ETA:
                     <Typography variant='h4' component='h4' >
@@ -84,7 +88,7 @@ const TransportModal = () => {
                         display: 'flex',
                         alignItems: "center",
                         gap: "0.5rem",
-                        opacity:"0.8"
+                        opacity: "0.8"
                     }}>
                     Driver:
                     <Typography variant='h4' component='h4' >
@@ -94,9 +98,9 @@ const TransportModal = () => {
             </Stack>
             {/* footer */}
             <Stack direction='row' gap="0.3rem" >
-                <Button sx={{ borderRadius: "0px", fontSize: "13px" }}>actual status</Button>
-                <Button sx={buttonSytle}>operation</Button>
-                <Button sx={buttonSytle}>Statistics</Button>
+                <Button sx={buttonSytle} onClick={() => navigate("/actual-Status/epack")}>actual status</Button>
+                <Button sx={buttonSytle} onClick={() => navigate("/actual-Status/operations")}>operation</Button>
+                <Button sx={buttonSytle} onClick={() => navigate("/actual-Status/statistics")}>Statistics</Button>
             </Stack>
         </Box>
     )

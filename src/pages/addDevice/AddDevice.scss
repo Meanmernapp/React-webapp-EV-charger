@@ -1,0 +1,19 @@
+.add-device-scan-button-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  .add-device-scan-button {
+    text-transform: none;
+    color: black;
+    padding: 4px 15px;
+    color: #eaeaea;
+    border: 1px solid #eaeaea;
+  }
+}
+
+.add-device-custom-menu-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}

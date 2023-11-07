@@ -1,0 +1,63 @@
+[
+    {
+        "id":1,
+        "name":"Tesla",
+        "nameId":"187 341 123123",
+        "location":"37139 Adelebsen",
+        "locationSpot":"Hub",
+        "connection":"24-Autohof Lutterberg",
+        "pulgs":"1/2 plugs",
+        "status":"stand by",
+        "price":"010€/kWh",
+        "priceStatus":"sell",
+        "soc":"est. 5.4kWh",
+        "socP":"20%",
+        "lastCheckup":"18.03, 13:28"
+    },
+    {
+        "id":2,
+        "name":"Edison",
+        "nameId":"187 341 123123",
+        "location":"37139 Adelebsen",
+        "locationSpot":"Hub",
+        "connection":"24-Autohof Lutterberg",
+        "pulgs":"1/2 plugs",
+        "status":"discharging",
+        "price":"010€/kWh",
+        "priceStatus":"sell",
+        "soc":"est. 5.4kWh",
+        "socP":"20%",
+        "lastCheckup":"18.03, 13:28"
+    },
+    {
+        "id":3,
+        "name":"Tesla",
+        "nameId":"187 341 123123",
+        "location":"37139 Adelebsen",
+        "locationSpot":"Hub",
+        "connection":"24-Autohof Lutterberg",
+        "pulgs":"1/2 plugs",
+        "status":"transportation",
+        "price":"010€/kWh",
+        "priceStatus":"sell",
+        "soc":"est. 5.4kWh",
+        "socP":"20%",
+        "lastCheckup":"18.03, 13:28"
+    },
+    {
+        "id":4,
+        "name":"Edison",
+        "nameId":"187 341 123123",
+        "location":"37139 Adelebsen",
+        "locationSpot":"Hub",
+        "connection":"24-Autohof Lutterberg",
+        "pulgs":"1/2 plugs",
+        "status":"charged",
+        "price":"010€/kWh",
+        "priceStatus":"sell",
+        "soc":"est. 5.4kWh",
+        "socP":"20%",
+        "lastCheckup":"18.03, 13:28"
+    }
+
+]

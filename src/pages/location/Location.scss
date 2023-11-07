@@ -1,0 +1,16 @@
+.location-add-btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.location-add-modal {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  transform: translate(-50% -50%);
+  width: 400px;
+  box-shadow: 24;
+  padding: 2rem;
+  border-radius: 4px;
+  background: white;
+}

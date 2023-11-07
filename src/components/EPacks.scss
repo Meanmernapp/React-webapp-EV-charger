@@ -1,0 +1,29 @@
+.epacks-container {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  transition: background-color 0.3s;
+  border: 1px solid #dadada;
+  &:hover {
+    background-color: #f7f7f7;
+  }
+  .epacks-container-inner-typos {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.doughnet-boxx {
+  position: relative;
+  width: 90px;
+  height: 90px;
+
+  .doughnet-boxx-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

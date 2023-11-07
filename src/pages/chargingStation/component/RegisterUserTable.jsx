@@ -226,6 +226,8 @@ const TableMui = ({ data, tableType }) => {
         onClose={() => setRenew(false)}
         onConfirm={handleRenew}
         open={renew}
+      confirm="confirm"
+      colorCode="#71953E"
       />
     </>
   );

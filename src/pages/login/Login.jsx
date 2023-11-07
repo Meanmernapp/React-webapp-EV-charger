@@ -1,10 +1,10 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material'; // Import the ErrorOutline icon
 import CancelIcon from '@mui/icons-material/Cancel';
-import { Button, IconButton, InputAdornment, InputLabel, Stack, TextField, Typography } from '@mui/material';
+import { Button, FormControl, IconButton, InputAdornment, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import React, { useState } from 'react';
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/logo/logoT.svg";
 import { LoginUser } from '../../services/authetication/AutheticationApi';
@@ -20,6 +20,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(false); // Change error state to boolean
+  const { user } = useSelector((state) => state.AuthenticationSlice);
 
   // function to toggle password visibility
   const handleTogglePasswordVisibility = () => {
@@ -33,19 +34,29 @@ const Login = () => {
 
   // function to handle login
   const handleLogin = async () => {
-    const recaptchaToken  = await executeRecaptcha("login_action");
+    const recaptchaToken = await executeRecaptcha("login_action");
     const data = {
       email,
       password,
       recaptchaToken
     }
-
+    
     dispatch(LoginUser(data)).then(res => {
 
       if (res.payload?.data?.status == false) {
         setError(true)
       } else {
-        navigate("/map-view")
+        switch (res.payload?.data.data.role) {
+          case "user":
+            case "operator":
+              navigate("/map-view");
+              break;
+            case "driver":
+              navigate("/drivers")
+              break;
+            default:
+              navigate("/login");
+        }
       }
     })
   };
@@ -57,7 +68,7 @@ const Login = () => {
   };
 
   const onChangeRecapcha = (value) => {
-     //action here
+    //action here
   }
 
   return (
@@ -74,9 +85,11 @@ const Login = () => {
       </Typography>
       <br />
       <form>
+        
         <Box>
-          <InputLabel className='lable'>Email</InputLabel>
+          <InputLabel className='lable' htmlFor="email">Email</InputLabel>
           <TextField
+            id='email'
             type="email"
             size='small'
             variant="outlined"
@@ -87,9 +100,10 @@ const Login = () => {
           />
         </Box>
         <Box >
-          <InputLabel className='lable'>Password</InputLabel>
+          <InputLabel className='lable' htmlFor="password">Password</InputLabel>
           <TextField
             size='small'
+            id='password'
             type={showPassword ? 'text' : 'password'}
             variant="outlined"
             value={password}
@@ -120,14 +134,14 @@ const Login = () => {
         >
           Forget Password?</InputLabel>
         <Box sx={{ paddingTop: "1rem" }}>
-          {/* <ReCAPTCHA
-            sitekey="6LdxUjgnAAAAAK8Hy1i3a94ULzsPIglW8KTEaNzy"
-            onChange={onChangeRecapcha}
-          /> */}
-
         </Box>
         <Box sx={{ paddingTop: "2rem" }}>
-          <Button variant='contained' fullWidth onClick={handleLogin}>
+          <Button variant='contained' fullWidth onClick={handleLogin} sx={{
+            background: "#71953E", color: "#fff", "&:hover": {
+              background: "#BADA55",
+              color: "#000"
+            }
+          }}>
             Log in
           </Button>
         </Box>

@@ -9,7 +9,7 @@ const SimpleChartBar = ({  data }) => {
     const chartData = {
         datasets: [
             {
-                data: [70,30],
+                data: data,
                 backgroundColor: [ "#353535",'#AEAEB7'],
             },
         ],

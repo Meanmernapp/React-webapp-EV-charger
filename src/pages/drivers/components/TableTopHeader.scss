@@ -1,0 +1,18 @@
+.table-top-header-center-content {
+  min-height: 50px;
+  background-color: #353535;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table-top-header-outer-box {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

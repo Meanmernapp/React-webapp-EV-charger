@@ -17,7 +17,8 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import ConfirmationModal from '../../components/ConfirmationModal'
+import ConfirmationModal from '../../components/ConfirmationModal';
+import FiPowerIcon from '../../assets/common/fipower.svg'
 
 const ITEMS_PER_PAGE = 5;
 // charging status
@@ -26,7 +27,7 @@ const ChargerStatus = () => {
   const isSmallerScreen = useMediaQuery((theme => theme.breakpoints.down('sm')))
   const dispatch = useDispatch()
   // useSelector
-  const { getChargingStatus, getBatteryAvailables, updateBatteryAvailables,
+  const { getChargingStatus, getBatteryAvailables, updateBatteryAvailables, createBatteryAvailable,
     getBatteryPercentage, getConnectorStatus, deleteBatteryAvailables } = useSelector(state => state.ChargingStationSlice)
   // useState
   const [currentPage, setCurrentPage] = useState(0);
@@ -38,8 +39,24 @@ const ChargerStatus = () => {
   const [addDateTime, setAddDateTime] = useState("")
   const [deleteBattery, setDeleteBattery] = useState(false)
   const [batteryId, setBatteryId] = useState("")
+  const [isTurnOn, setIsTurnOn] = useState(false)
+  const [turnOnDc, setTurnOnDc] = useState(false)
+  const [dcRequlation, setDcRequlation] = useState(false)
+  const [batteryTurnOn, setBatteryTurnOn] = useState(false)
 
   const batteryValue = getBatteryPercentage?.batteryPercentage / 100 * 220
+
+  // funtions
+  //turn on or off dc requlation
+  const toggelDcMode = () => {
+    setDcRequlation(!dcRequlation)
+    setTurnOnDc(false)
+  }
+  //turn battery on or off
+  const toggelBatteryMode = () => {
+    setBatteryTurnOn(!batteryTurnOn)
+    setIsTurnOn(false)
+  }
   // delete battery
   const handleDelete = () => {
     dispatch(DeleteBatteryAvailables(batteryId))
@@ -50,12 +67,11 @@ const ChargerStatus = () => {
     setShowDatePicker(!showDatePicker);
   };
 
-
   //  hande date add 
   const handleDateChange = (date) => {
 
     if (!moment(date).isValid()) {
-      console.error('Invalid date format:', date?.$d);
+      toast.error('Invalid date format:', date?.$d);
       return;
     }
 
@@ -130,15 +146,20 @@ const ChargerStatus = () => {
   useEffect(() => {
 
     if (getBatteryAvailables?.length > 0) {
-      getBatteryAvailables?.map(item => {
-        if (item.validity) {
-          setSelectedDate(item?.date_time)
-        } else {
-          setSelectedDate(null)
+      let foundValidItem = false;
+
+      getBatteryAvailables.forEach(item => {
+        if (item.validity && !foundValidItem) {
+          setSelectedDate(item?.date_time);
+          foundValidItem = true;
         }
-      })
+      });
+
+      if (!foundValidItem) {
+        setSelectedDate(null);
+      }
     } else {
-      setSelectedDate(null)
+      setSelectedDate(null);
     }
 
   }, [getBatteryAvailables, updateBatteryAvailables, deleteBatteryAvailables])
@@ -159,7 +180,7 @@ const ChargerStatus = () => {
               <Typography variant='h2' component="h2">
                 Next Availability
               </Typography>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingTop: "2rem" }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingTop: "1rem" }}>
                 <Stack
                   direction="row"
                   alignItems="center"
@@ -194,7 +215,7 @@ const ChargerStatus = () => {
                 </Stack>
               </Box>
 
-              <Box sx={{ paddingTop: '1rem', height: "380px" }}>
+              <Box sx={{ paddingTop: '0.5rem', height: "324px" }}>
                 {
                   getBatteryAvailables?.length > 0 ?
                     <>
@@ -205,7 +226,7 @@ const ChargerStatus = () => {
                               className='battery_availability'
                               alignItems="center"
                               sx={{
-                                paddingTop: "0.5rem",
+                                paddingTop: "0.25rem",
                                 borderBottom: "1px solid #D1D1D1",
                                 paddingBottom: "0.5rem"
                               }}
@@ -225,11 +246,12 @@ const ChargerStatus = () => {
                               /> */}
                                 {/* </Typography> */}
                                 <Box sx={{ width: "100%" }}>
-                                  <LocalizationProvider dateAdapter={AdapterDayjs} >
+                                  <LocalizationProvider dateAdapter={AdapterDayjs}  >
                                     <DemoContainer components={['DateTimePicker', 'DateTimePicker']}>
 
                                       <DateTimePicker
                                         disablePast={true}
+
                                         format={"YYYY/MM/DD, HH:mm"}
                                         // value={updateDate[`updateDate_${item?.id}`] || item?.date_time || null}
                                         // label="Date And time"
@@ -284,25 +306,7 @@ const ChargerStatus = () => {
                     showDatePicker ? "X Cancel" : "+ Add date.."
                   }
                 </Typography>
-                {/* {showDatePicker && (
-                <DatePicker
-                  // selected={selectedDate}
-                  onChange={handleDateChange}
-                  showTimeSelect
-                  value={addDateTime}
-                  onClickOutside={()=> setShowDatePicker(false)}
-                  onCalendarClose={()=> console.log(addDateTime)}
-                  open={showDatePicker}
-                  dateFormat="Pp"
-                  popperPlacement="top"
-                  timeCaption="Time"
-                  minDate={new Date()}
-                   
-                />
-              )} */}
-
                 {showDatePicker &&
-
                   <LocalizationProvider dateAdapter={AdapterDayjs} >
                     <DemoContainer components={['DateTimePicker', 'DateTimePicker']}>
 
@@ -310,6 +314,7 @@ const ChargerStatus = () => {
                         disablePast={true}
                         // label="Date And time"
                         open={true}
+                        ampm={false}
                         format={"YYYY/MM/DD, HH:mm"}
                         onAccept={() => {
                           const data = {
@@ -331,10 +336,10 @@ const ChargerStatus = () => {
                   </LocalizationProvider>
                 }
               </Stack>
-              <Box sx={{ paddingTop: "1rem" }}>
-                <Typography variant={isSmallerScreen ? "h3" : "h2"} className='change_size' component="h2" sx={{ color: "#FF7246" }}>
+              <Box >
+                {/* <Typography variant={isSmallerScreen ? "h3" : "h2"} className='change_size' component="h2" sx={{ color: "#FF7246" }}>
                   Something went wrong?
-                </Typography>
+                </Typography> */}
                 <Stack direction="row" alignItems="center" >
                   <Checkbox
                     sx={{
@@ -349,13 +354,53 @@ const ChargerStatus = () => {
                   </Typography>
                 </Stack>
                 <Stack className='btn_footer'>
-                  <Button
+                  {/* <Button
                     variant='outlined'
-                    className='cancel'>cancel</Button>
+                    className='cancel'>cancel</Button> */}
                   <Button className='update' onClick={() => { handleUpdateStatus() }}>
                     Update status
                   </Button>
                 </Stack>
+              </Box>
+              <Box className="e_pack_control">
+
+                <Typography variant='h2' component="h2">
+                  E-Pack control
+                </Typography>
+                <Box className='working_mode'>
+                  <Typography variant='body1' component="body1">
+                    Working Mode
+                  </Typography>
+                  <Box className="switch_box" onClick={() => setTurnOnDc(true)}>
+                    <Typography variant='body1' component="body1" className={!dcRequlation ? 'turn_off_dc' : "padd"}>
+                      PQ
+                    </Typography>
+                    <Typography variant='body1' component="body1" className={dcRequlation ? 'turn_on_dc' : ""}>
+                      DC Voltage Regulation
+                    </Typography>
+
+                  </Box>
+
+                </Box>
+
+                {
+                  !batteryTurnOn &&
+                  <Box className="btn_container">
+                    <Button className='shut_down' onClick={() => setIsTurnOn(true)}>
+                      Turn Off
+                      <img src={FiPowerIcon} alt="fi_power" />
+                    </Button>
+                  </Box>
+                }
+                {
+                  batteryTurnOn &&
+                  <Box className="btn_container">
+                    <Button className='trun_on' onClick={() => setIsTurnOn(true)}>
+                      Turn On
+                      <img src={FiPowerIcon} alt="fi_power" />
+                    </Button>
+                  </Box>
+                }
               </Box>
             </Stack>
           </Grid>
@@ -492,6 +537,27 @@ const ChargerStatus = () => {
         onClose={() => setDeleteBattery(false)}
         onConfirm={handleDelete}
         open={deleteBattery}
+        colorCode="#FF553E"
+        confirm="confirm"
+      />
+
+      <ConfirmationModal
+        confirmationMessage='You are shutting down the E-Pack.'
+        onClose={() => setIsTurnOn(false)}
+        onConfirm={toggelBatteryMode}
+        open={isTurnOn}
+        colorCode="#FF553E"
+        confirm="I am sure, turn it off"
+      />
+
+
+      <ConfirmationModal
+        confirmationMessage='You are switching to DC voltage regulation Mode.'
+        onClose={() => setTurnOnDc(false)}
+        onConfirm={toggelDcMode}
+        open={turnOnDc}
+        colorCode="#71953E"
+        confirm="i am sure"
       />
     </>
   )

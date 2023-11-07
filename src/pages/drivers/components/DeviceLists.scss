@@ -1,0 +1,11 @@
+.device-list-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+.device-list-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
